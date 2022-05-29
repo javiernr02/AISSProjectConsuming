@@ -32,11 +32,26 @@ public class FilmResource {
 		return Arrays.asList(films);
 	}
 
-	public Collection<Film> filtradoPorScore(String rango) {
+	public Collection<Film> filtradoPorScore(String rango, String limit) {
 		ClientResource cr = null;
 		Film [] films = null;
 		try {
-			cr = new ClientResource(uri + "?score=" + rango);
+			cr = new ClientResource(uri + "?limit=" + limit + "&"+ "score=" + rango);
+			films = cr.get(Film[].class);
+			
+		} catch (ResourceException re) {
+			System.err.println("Error when retrieving all films: " + cr.getResponse().getStatus());
+			throw re;
+		}
+		
+		return Arrays.asList(films);
+	}
+	
+	public Collection<Film> filtradoPorGenre(String genre, String limit) {
+		ClientResource cr = null;
+		Film [] films = null;
+		try {
+			cr = new ClientResource(uri + "?limit=" + limit +"&"+ "genre=" + genre);
 			films = cr.get(Film[].class);
 			
 		} catch (ResourceException re) {

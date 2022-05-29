@@ -15,8 +15,6 @@ import aiss.model.Film;
 
 
 
-
-
 public class FilmResourceTest {
 	
 	static Film film1, film2, film3;
@@ -59,6 +57,34 @@ public class FilmResourceTest {
 				System.out.println("Film " + i++ + " : " + f.getTitle() + " (ID=" + f.getId() + ")");
 			}
 		}
+	@Test
+	public void testFiltarPorScore() {
+		Collection<Film> films = fr.filtradoPorScore("7.0-9.0", "5");
+				
+				assertNotNull("The collection of films is null", films);
+				
+				// Show result
+				System.out.println("List of Films:");
+				int i=1;
+				for (Film f : films) {
+					System.out.println("Film " + i++ + " : " + f.getTitle() + " (ID=" + f.getId() + ")");
+				}
+			}
+	
+	@Test
+	public void testFiltarPorAnyo() {
+		Collection<Film> films = fr.filtradoPorGenre("Drama" , "5");
+				
+				assertNotNull("The collection of films is null", films);
+				
+				// Show result
+				System.out.println("List of Films:");
+				int i=1;
+				for (Film f : films) {
+					System.out.println("Film " + i++ + " : " + f.getTitle() + " (ID=" + f.getId() + ")");
+				}
+			}
+
 
 	@Test
 	public void testGetFilm() {
