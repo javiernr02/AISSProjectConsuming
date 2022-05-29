@@ -27,6 +27,7 @@ public class ViajesResource {
 			
 		} catch(ResourceException re) {
 			System.err.println("Error when retrieving the collections of trips: " + cr.getResponse().getStatus());
+			throw re;
 		}
 		return Arrays.asList(viajes);
 	}

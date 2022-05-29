@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.restlet.resource.ResourceException;
 
 import aiss.model.Film;
 import aiss.model.Librarie;
@@ -87,23 +88,8 @@ public class LibrarieResourceTest {
 		assertEquals("The librarie's description has not been setted correctly", librarieDescription, librarie4.getDescription());
 	}
 	
-	@Test
-	public void testUpdateLibrarie() {
-		String playlistName = "Updated librarie name";
-
-		// Update librarie
-		librarie.setName(playlistName);
-
-		boolean success = lr.updateLibrarie(librarie);
-		
-		assertTrue("Error when updating the librarie", success);
-		
-		Librarie l  = lr.getLibrarie(librarie.getId());
-		assertEquals("The playlist's name has not been updated correctly", playlistName, l.getName());
-
-	}
 	
-	@Test
+	@Test(expected = ResourceException.class)
 	public void testDeleteLibrarie() {
 		
 		boolean success = lr.deleteLibrarie(librarie2.getId());
@@ -131,6 +117,44 @@ public class LibrarieResourceTest {
 		}
 		
 	}
+	@Test
+	public void testGetLibrarieError() {
+		Librarie l = lr.getLibrarie("l38");
+		
+		assertEquals("The id of the playlists do not match", librarie.getId(), l.getId());
+		assertEquals("The name of the playlists do not match", librarie.getName(), l.getName());
+		
+		// Show result
+		System.out.println("Playlist id: " +  l.getId());
+		System.out.println("Playlist name: " +  l.getName());
+
+	}
+
+	@Test(expected = ResourceException.class)
+	public void testAddFilmError() {
+		lr.addFilm("l500", "f63636");
+		
+	}
+	
+	@Test(expected = ResourceException.class)
+	public void testDeleteLibrarieError() {
+		
+		boolean success = lr.deleteLibrarie("l500");
+		assertTrue("Incorrect Id", success);
+		
+		
+	}
+	@Test
+	public void testRemoveFilmError() {
+		//TODO
+		
+		if(film!=null) {
+			boolean success = lr.removeFilm("l500", "f63636");
+			assertTrue("Incorrect Id", success);
+		}
+		
+	}
+	
 
 
 }

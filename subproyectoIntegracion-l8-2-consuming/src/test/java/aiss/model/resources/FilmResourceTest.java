@@ -140,5 +140,61 @@ public class FilmResourceTest {
 		Film film  = fr.getFilm(film2.getId());
 		assertNull("The song has not been deleted correctly", film);
 	}
+	
+	
+	@Test(expected = ResourceException.class)
+	public void testUpdateFilmError() {
+			
+			String filmTitle = "Update song test title";
+			
+			// Update song
+			Film film5 = new Film("Test error",null,"11/08/2019",120, 8.5,null);
+			
+			boolean success = fr.updateFilm(film5);
+			
+			assertTrue("Error when updating the song", success);
+			
+			Film film = fr.getFilm(film1.getId());
+			assertEquals("The song's title has not been updated correctly", filmTitle, film.getTitle());
+			
+		}
+	@Test(expected = ResourceException.class)
+	public void testAddFilmError() {
+		//TODO
+		
+		List<String> generos = new ArrayList<String>();
+		List<String> idiomas = new ArrayList<String>();
+		String filmTitle = "Test title";
+		String filmPremiere = "11-08-2019";
+		Integer filmRuntime = 120;
+		Double filmScore = 8.5;
+		
+		idiomas.add("English");
+		generos.add("Crime Drama");
+		
+		film3 = fr.addFilm(new Film(filmTitle,generos,filmPremiere,filmRuntime, filmScore,idiomas));
+		
+		assertNotNull("Error when adding the film", film3);
+		assertEquals("The film's title has not been setted correctly", filmTitle, film3.getTitle());
+		assertEquals("The song's name artist has not been setted correctly", generos, film3.getGenre());
+		assertEquals("The song's album has not been setted correctly", filmPremiere, film3.getPremiere());
+		assertEquals("The song's year has not been setted correctly", filmRuntime, film3.getRuntime());
+		assertEquals("The song's year has not been setted correctly", filmScore, film3.getScore());
+
+	}
+	
+	@Test(expected = ResourceException.class)
+	public void testDeleteFilmError() {
+		Film film5 = new Film("Test error",null,"11/08/2019",120, 8.5,null);
+		// Delete films
+		boolean success = fr.deleteFilm(film5.getId());
+		
+		assertTrue("Error when deleting the song", success);
+		
+		Film film  = fr.getFilm(film5.getId());
+		assertNull("The song has not been deleted correctly", film);
+	}
+	
+	
 
 }
