@@ -12,6 +12,7 @@ import aiss.model.Playlist;
 public class PlaylistResource {
 
 	private String uri = "https://aiss-lab-7-348716.ew.r.appspot.com/api/v1/lists";
+	
 	//private String uri = "http://playlist-api.appspot.com/api/lists";
 	//private String uri = "http://localhost:8095/api/lists";
 	
