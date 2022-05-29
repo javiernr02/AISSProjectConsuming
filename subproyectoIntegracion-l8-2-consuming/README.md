@@ -1,3 +1,4 @@
-# lab4-consumingRESTServices2
+# PROYECTO CONSUMICIÓN DE API
 
-Material práctica 4 AISS: Consumo de servicios RESTful (II)
+En este proyecto hemos consumidos las APIs de NetFlix API y APIones
+
