@@ -21,10 +21,9 @@ public class VuelosResourceTest {
 	@BeforeClass
 	public static void setup() throws Exception {
 		
-		vuelo1 = vr.addVuelo(new Vuelos("Test id","Test compania","Test horaLlegada","Test horaSalida","Test precio","Test escala"));
+		vuelo1 = vr.addVuelo(new Vuelos("vuelo40","Test compania","10:00","11:00","75","false"));
 		
-		vuelo2 = vr.addVuelo(new Vuelos("Test id 2","Test compania 2","Test horaLlegada 2","Test horaSalida 2","Test precio 2",
-				"Test escala 2"));
+		vuelo2 = vr.addVuelo(new Vuelos("Test id","Test compania2","10:00","11:00","75","false"));
 		
 	}
 
@@ -41,13 +40,13 @@ public class VuelosResourceTest {
 	public void testGetAll() {
 		Collection<Vuelos> vuelos = vr.getAll();
 		
-		assertNotNull("The collection of flights is null", vuelos);
+			assertNotNull("The collection of flights is null", vuelos);
 		
-		System.out.println("Listing all flights:");
-		int i=1;
-		for (Vuelos v : vuelos) {
-			System.out.println("Flight " + i++ + " : " + " (ID=" + v.getId() + ")");
-		}
+			System.out.println("Listing all flights:");
+			int i=1;
+			for (Vuelos v : vuelos) {
+				System.out.println("Flight " + i++ + " : " + " (ID=" + v.getId() + ")");
+			}
 	}
 
 	

@@ -28,6 +28,7 @@ public class VuelosResource {
 			
 		} catch(ResourceException re) {
 			System.err.println("Error when retrieving the collections of flights: " + cr.getResponse().getStatus());
+			throw re;
 		}
 		return Arrays.asList(vuelos);
 	}

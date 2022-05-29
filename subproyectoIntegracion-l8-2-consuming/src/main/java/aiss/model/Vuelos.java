@@ -50,12 +50,13 @@ public class Vuelos {
 		this.escala = escala;
 	}
 
-	public Vuelos(String compania, String horaLlegada, String horaSalida, String precio, String escala) {
+	public Vuelos(String compania, String horaLlegada, String horaSalida, String precio, String escala, Aviones avion) {
     	this.compania = compania;
 		this.horaLlegada = horaLlegada;
 		this.horaSalida = horaSalida;
 		this.precio = precio;
 		this.escala = escala;
+		this.avion= avion;
 	}
 
 	@JsonProperty("id")

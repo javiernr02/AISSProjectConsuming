@@ -26,14 +26,8 @@ public class Librarie {
     private String id;
     @JsonProperty("name")
     private String name;
-    @JsonProperty("username")
-    private String username;
-    @JsonProperty("userlikes")
-    private List<String> userlikes;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("likes")
-    private Integer likes;
     @JsonProperty("films")
     private List<Film> films = null;
     @JsonIgnore

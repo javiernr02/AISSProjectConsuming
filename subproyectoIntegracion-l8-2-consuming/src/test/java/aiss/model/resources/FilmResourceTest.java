@@ -46,7 +46,7 @@ public class FilmResourceTest {
 
 	@Test
 	public void testGetAll() {
-	Collection<Film> films = fr.getAll();
+		Collection<Film> films = fr.getAll();
 			
 			assertNotNull("The collection of films is null", films);
 			

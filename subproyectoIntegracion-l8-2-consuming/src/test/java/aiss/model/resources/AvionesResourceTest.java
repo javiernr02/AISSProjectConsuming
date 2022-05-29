@@ -2,7 +2,7 @@ package aiss.model.resources;
 
 import static org.junit.Assert.*;
 
-
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,9 +22,11 @@ public class AvionesResourceTest {
 	@BeforeClass
 	public static void setup() throws Exception {
 		
-		avion1 = ar.addAvion(new Aviones("Test capacity","Test model"));
+		List<String> servicios = new ArrayList<String>();
+		servicios.add("business");
+		avion1 = ar.addAvion(new Aviones("Test capacity","Test model",servicios));
 		
-		avion2 = ar.addAvion(new Aviones("Test capacity 2","Test model 2"));
+		avion2 = ar.addAvion(new Aviones("Test capacity 2","Test model 2",servicios));
 		
 	}
 	
@@ -62,7 +64,7 @@ public class AvionesResourceTest {
 		String avionCapacidad = "Add plane's test capacity";
 		String avionModelo = "Add plane's test model";
 		
-		avion3 = ar.addAvion(new Aviones(avionCapacidad, avionModelo, avionServicios));
+		avion3 = ar.addAvion(new Aviones(avionCapacidad, avionModelo));
 		
 		assertNotNull("Error when adding the plane", avion3);
 		assertEquals("The plane's capacity has not been setted correctly", avionCapacidad, avion3.getCapacidad());
